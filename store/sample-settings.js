@@ -1,0 +1,1 @@
+changeTestSettings({collapse:['promotion','jargon']});

@@ -1,0 +1,15 @@
+node_modules/
+dist/
+evidence/
+media/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crx
+*.log
+__pycache__/
+.DS_Store
+Thumbs.db
+.impeccable/

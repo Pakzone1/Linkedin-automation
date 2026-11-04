@@ -1,0 +1,12 @@
+{
+  "name": "linkedin-lens",
+  "version": "2.1.2",
+  "private": true,
+  "description": "AI categories and reversible masks for your LinkedIn feed.",
+  "engines": { "node": ">=24" },
+  "scripts": {
+    "test": "node --test tests/*.test.cjs",
+    "check": "node scripts/check.mjs",
+    "package": "python scripts/package.py"
+  }
+}
