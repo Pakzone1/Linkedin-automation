@@ -1,0 +1,5 @@
+.ll-post {outline:2px solid var(--ll-color,#727b85)!important;outline-offset:-2px;border-radius:10px!important}
+.ll-masked {position:relative!important;isolation:isolate}
+.ll-masked > :not(.ll-controls){opacity:.12!important;filter:blur(5px)!important;pointer-events:none!important;user-select:none!important}
+.ll-masked::after{content:"";position:absolute;inset:0;z-index:1;background:rgba(255,255,255,.8);backdrop-filter:blur(6px);border-radius:inherit;pointer-events:auto}
+.ll-controls{display:block!important;width:100%!important;flex:0 0 auto!important;box-sizing:border-box!important;position:relative!important;z-index:2!important;isolation:isolate}

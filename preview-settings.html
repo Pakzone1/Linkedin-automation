@@ -1,0 +1,30 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LinkedIn Lens</title><link rel="stylesheet" href="extension/popup.css?v=9dfe901225"><style>body{margin:0 auto}</style></head><body><main>
+<header><img src="extension/icons/logo.svg?v=2edff53c4f" width="46" height="46" alt=""><div><h1>LinkedIn Lens</h1></div><span class="version">1.0.0</span></header>
+<form id="settings"><div class="master"><div><strong>Enable Lens</strong></div><label class="switch"><input id="enabled" type="checkbox" aria-label="Enable LinkedIn Lens"><span></span></label></div>
+<section aria-labelledby="cloud-heading" class="cloud-disclosure"><h2 id="cloud-heading">Cloud AI processing</h2><p>When enabled, Lens sends loaded post text, category definitions and post signals to OpenRouter and its AI providers. For posts without text, it downloads and sends the first attached image. Visible posts and the next 10 loaded posts may be analyzed automatically. Comment drafts also send your writing instructions when you click Generate. Provider charges and data policies apply.</p><label class="setting"><span>I agree to send this content for cloud AI processing.</span><input id="cloud-consent" type="checkbox"></label><a href="extension/privacy.html" target="_blank" rel="noopener">Read the privacy policy</a></section>
+<nav aria-label="Settings sections"><button type="button" class="tab active" data-panel="feed-panel" aria-pressed="true">Feed</button><button type="button" class="tab" data-panel="category-panel" aria-pressed="false">Categories</button><button type="button" class="tab" data-panel="ai-panel" aria-pressed="false">Connection</button></nav>
+<section id="feed-panel" class="tab-panel"><h2>Feed settings</h2>
+<label class="setting"><span><strong>Mask unreadable posts</strong></span><input id="hide-unreadable" type="checkbox"></label>
+<label class="setting"><span><strong>Mask non-post cards</strong><small>Job recommendations and LinkedIn offers</small></span><input id="hide-non-posts" type="checkbox"></label>
+<label class="setting"><span><strong>Suggest comments</strong></span><input id="comments" type="checkbox"></label>
+</section>
+<section id="category-panel" class="tab-panel" hidden>
+<div class="section-head"><h2>Categories <small id="category-count"></small></h2><button id="add-category" type="button">Add category</button></div>
+<p class="thresholds">Broad 45% · Subcategory 70% · Detail 95%</p>
+<input id="category-search" type="search" placeholder="Find a category…" aria-label="Find a category">
+<div class="tree-actions"><button type="button" id="expand-categories">Expand all</button><button type="button" id="fold-categories">Fold all</button><button type="button" id="undo-categories" hidden>Undo</button><button type="button" id="reset-categories">Restore defaults</button></div>
+<div id="category-editor" class="category-editor" hidden><h3 id="editor-title">Edit category</h3>
+<label for="category-name">Name</label><input id="category-name" type="text" maxlength="60">
+<label for="category-description">What should the AI look for?</label><textarea id="category-description" maxlength="500"></textarea>
+<div class="editor-layout"><div><label for="category-parent">Under</label><select id="category-parent"></select></div><div><label for="category-color">Color</label><input id="category-color" type="color"></div></div>
+<p id="editor-error" role="alert"></p><div class="actions"><button type="button" id="apply-category">Apply</button><button type="button" id="cancel-category">Cancel</button><button type="button" id="add-child">Add subcategory</button><button type="button" id="remove-category">Remove</button></div></div>
+<div class="column-labels">Category <span>Color · On · Mask</span></div><div id="category-tree"></div>
+<details class="system-results"><summary>Other results</summary><div id="system-categories"></div></details>
+</section>
+<section id="ai-panel" class="tab-panel" hidden><h2>AI connection</h2>
+<label for="key">OpenRouter API key</label><input id="key" type="password" autocomplete="off" placeholder="sk-or-…"><small id="key-state"></small>
+<label for="model">Comment model</label><input id="model" type="text" maxlength="100">
+<div class="budget"><div><label for="limit">Request limit</label><small id="usage"></small></div><input id="limit" type="number" min="1" max="500"></div>
+<details><summary>Privacy</summary><p>Post text, or the first attached image when text is missing, goes to OpenRouter and its provider. Custom comment instructions are sent when you generate. Messages and comment threads are excluded. Your key is saved on this device until you choose Forget key.</p><p>Provider charges may apply. Failed requests count toward the limit; cached classifications do not. Broader matches show at 45%; more detail needs 70% or 95%. Automatic masks still require 70% across the matching path.</p><div class="actions"><button id="forget" type="button">Forget key</button><button id="reset" type="button">Reset count</button></div></details></section>
+<footer><p id="status" role="status" aria-live="polite"></p><button class="primary" type="submit">Save</button></footer></form>
+</main><script src="extension/core.js?v=db3583d461"></script><script src="tests/mock.js?v=90239dacef"></script><script src="tests/preview-config.js"></script><script src="extension/popup.js?v=1fa41c900f"></script></body></html>
